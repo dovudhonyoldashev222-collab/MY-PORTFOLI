@@ -130,7 +130,35 @@ const translations = {
 
 function App() {
   const [lang, setLang] = useState('uz');
+  const [formStatus, setFormStatus] = useState('');
+
   const t = translations[lang];
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('sending');
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xvgzlowz", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        e.target.reset();
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormStatus('error');
+    }
+  };
 
   return (
     <div className="portfolio">
@@ -348,19 +376,25 @@ function App() {
             <p>{t.contact.text}</p>
             <form
               className="contact-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const message = formData.get('message');
-                window.location.href = `mailto:dovudhonyoldashev222@gmail.com?subject=Portfolio Message from ${name}&body=From: ${name} (${email})%0D%0A%0D%0AMessage: ${message}`;
-              }}
+              onSubmit={handleContactSubmit}
             >
               <input type="text" name="name" placeholder={t.contact.name} required />
               <input type="email" name="email" placeholder={t.contact.email} required />
               <textarea name="message" placeholder={t.contact.message} rows="5" required></textarea>
-              <button type="submit">{t.contact.send}</button>
+              <button type="submit" disabled={formStatus === 'sending'}>
+                {formStatus === 'sending' ? (lang === 'uz' ? 'Yuborilmoqda...' : lang === 'ru' ? 'Отправка...' : 'Sending...') : t.contact.send}
+              </button>
+
+              {formStatus === 'success' && (
+                <p style={{ color: '#4ade80', marginTop: '1rem', fontWeight: 'bold' }}>
+                  {lang === 'uz' ? 'Xabaringiz muvaffaqiyatli yuborildi!' : lang === 'ru' ? 'Ваше сообщение успешно отправлено!' : 'Your message has been sent successfully!'}
+                </p>
+              )}
+              {formStatus === 'error' && (
+                <p style={{ color: '#f87171', marginTop: '1rem', fontWeight: 'bold' }}>
+                  {lang === 'uz' ? 'Xatolik yuz berdi. Qayta urinib ko\'ring.' : lang === 'ru' ? 'Произошла ошибка. Попробуйте еще раз.' : 'An error occurred. Please try again.'}
+                </p>
+              )}
             </form>
           </section>
         </Element>
