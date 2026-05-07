@@ -128,34 +128,63 @@ const translations = {
   }
 };
 
+const TELEGRAM_BOT_TOKEN = "7812633839:AAG747R-4C6INowWXzGzW7_RbnIconNKxh0";
+const TELEGRAM_CHAT_ID = "537095371";
+
 function App() {
   const [lang, setLang] = useState('uz');
   const [formStatus, setFormStatus] = useState('');
 
   const t = translations[lang];
 
+  const escapeHTML = (value) => value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('sending');
 
     const formData = new FormData(e.target);
+    const name = formData.get('name')?.toString().trim() || '';
+    const email = formData.get('email')?.toString().trim() || '';
+    const message = formData.get('message')?.toString().trim() || '';
+
+    const telegramMessage = [
+      '<b>New contact request received</b>',
+      `<b>Name:</b> ${escapeHTML(name)}`,
+      `<b>Email:</b> ${escapeHTML(email)}`,
+      '<b>Message:</b>',
+      escapeHTML(message)
+    ].join('\n');
 
     try {
-      const response = await fetch("https://formspree.io/f/xvgzlowz", {
-        method: "POST",
-        body: formData,
+      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
         headers: {
-          'Accept': 'application/json'
-        }
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: telegramMessage,
+          parse_mode: 'HTML'
+        })
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.ok) {
         setFormStatus('success');
         e.target.reset();
       } else {
+        console.error('Telegram send error:', result);
         setFormStatus('error');
       }
     } catch (error) {
+      console.error('Telegram request failed:', error);
       setFormStatus('error');
     }
   };
