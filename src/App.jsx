@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, Element } from 'react-scroll';
 import { Send, Instagram, Facebook, Mail, Globe, Github as GithubIcon, ExternalLink, ShoppingBag, Layout, Code2, Download, User, Briefcase, MessageSquare, Home, Camera, ShieldCheck, UserPlus } from 'lucide-react';
 import heroImg from './img/image.png'
 import modernizeImg from './img/image copy.png'
@@ -145,212 +146,224 @@ function App() {
           <nav className="navbar">
             <div className="logo">Portfoliom</div>
             <ul className="nav-links">
-              <li><a href="#hero">{t.nav.main}</a></li>
-              <li><a href="#about">{t.nav.about}</a></li>
-              <li><a href="#projects">{t.nav.projects}</a></li>
-              <li><a href="#contact">{t.nav.contact}</a></li>
+              <li><Link to="hero" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>{t.nav.main}</Link></li>
+              <li><Link to="about" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>{t.nav.about}</Link></li>
+              <li><Link to="services" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>{t.services.title}</Link></li>
+              <li><Link to="projects" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>{t.nav.projects}</Link></li>
+              <li><Link to="contact" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>{t.nav.contact}</Link></li>
             </ul>
           </nav>
         </header>
 
         <div className="sidebar-nav">
-          <a href="#hero" className="sidebar-link active"><Home size={20} /></a>
-          <a href="#about" className="sidebar-link"><User size={20} /></a>
-          <a href="#projects" className="sidebar-link"><Briefcase size={20} /></a>
-          <a href="#contact" className="sidebar-link"><MessageSquare size={20} /></a>
+          <Link to="hero" smooth={true} duration={500} offset={-70} className="sidebar-link" activeClass="active" spy={true}><Home size={20} /></Link>
+          <Link to="about" smooth={true} duration={500} offset={-70} className="sidebar-link" activeClass="active" spy={true}><User size={20} /></Link>
+          <Link to="services" smooth={true} duration={500} offset={-70} className="sidebar-link" activeClass="active" spy={true}><Code2 size={20} /></Link>
+          <Link to="projects" smooth={true} duration={500} offset={-70} className="sidebar-link" activeClass="active" spy={true}><Briefcase size={20} /></Link>
+          <Link to="contact" smooth={true} duration={500} offset={-70} className="sidebar-link" activeClass="active" spy={true}><MessageSquare size={20} /></Link>
         </div>
 
-        <section id="hero" className="hero-section">
-          <div className="hero-container">
-            <div className="hero-image">
-              <img src={heroImg} alt="Dovudhon" />
+        <Element name="hero">
+          <section id="hero" className="hero-section">
+            <div className="hero-container">
+              <div className="hero-image">
+                <img src={heroImg} alt="Dovudhon" />
+              </div>
+              <div className="hero-content">
+                <h1>{t.hero.title} <span>{t.hero.name}</span></h1>
+                <p>{t.hero.subtitle}</p>
+                <Link to="contact" smooth={true} duration={500} offset={-70} className="cta-button" style={{ cursor: 'pointer' }}>{t.hero.button}</Link>
+              </div>
             </div>
-            <div className="hero-content">
-              <h1>{t.hero.title} <span>{t.hero.name}</span></h1>
-              <p>{t.hero.subtitle}</p>
-              <a href="#contact" className="cta-button">{t.hero.button}</a>
-            </div>
-          </div>
-        </section>
+          </section>
+        </Element>
 
-        <section id="about" className="section about-section-new">
-          <h1 className="section-title">ABOUT <span>ME</span></h1>
+        <Element name="about">
+          <section id="about" className="section about-section-new">
+            <h1 className="section-title">ABOUT <span>ME</span></h1>
 
-          <div className="about-container">
-            <div className="personal-info">
-              <h3>{t.about.personalInfos}</h3>
-              <div className="info-grid">
-                <div className="info-item"><span>{t.about.firstName}:</span> Dovudhon</div>
-                <div className="info-item"><span>{t.about.lastName}:</span> Yuldashev</div>
-                <div className="info-item"><span>{t.about.age}:</span> 27 {lang === 'en' ? 'Years' : lang === 'ru' ? 'лет' : 'yosh'}</div>
-                <div className="info-item"><span>{t.about.nationality}:</span> {t.about.uzbek}</div>
-                <div className="info-item"><span>{t.about.freelance}:</span> {t.about.available}</div>
-                <div className="info-item"><span>{t.about.address}:</span> Namangan</div>
-                <div className="info-item"><span>{t.about.phone}:</span> +998 95 212 19 99</div>
-                <div className="info-item"><span>{t.about.email}:</span> dovudhonyoldashev222@gmail.com</div>
-                <div className="info-item"><span>{t.about.telegram}:</span> @dovudhon_1208</div>
-                <div className="info-item"><span>Instagram:</span> @y_dovudhon</div>
-                <div class="info-item"><span>{t.about.languages}:</span> {t.about.uzbek}, {t.about.russian}</div>
-              </div>
-              <a href="/CV.html" target="_blank" className="download-cv-btn">
-                {t.about.downloadCv}
-                <span className="icon-circle"><Download size={18} /></span>
-              </a>
-            </div>
-
-            <div className="stats-grid">
-              <div className="stat-card">
-                <h2>1+</h2>
-                <p>{t.about.stats.exp}</p>
-              </div>
-              <div className="stat-card">
-                <h2>10+</h2>
-                <p>{t.about.stats.projects}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="services" className="section services-section">
-          <h1 className="section-title"><span>{t.services.title.split(' ')[0]}</span> {t.services.title.split(' ')[1]}</h1>
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-image">
-                <img src={cameraServiceImg} alt={t.services.s1} />
-              </div>
-              <div className="service-content">
-                <div className="service-icon"><Camera size={30} /></div>
-                <h3>{t.services.s1}</h3>
-                <p>{t.services.s1_desc}</p>
-              </div>
-            </div>
-            <div className="service-card">
-              <div className="service-image">
-                <img src={googleServiceImg} alt={t.services.s2} />
-              </div>
-              <div className="service-content">
-                <div className="service-icon"><ShieldCheck size={30} /></div>
-                <h3>{t.services.s2}</h3>
-                <p>{t.services.s2_desc}</p>
-              </div>
-            </div>
-            <div className="service-card">
-              <div className="service-image">
-                <img src={appleServiceImg} alt={t.services.s3} />
-              </div>
-              <div className="service-content">
-                <div className="service-icon"><UserPlus size={30} /></div>
-                <h3>{t.services.s3}</h3>
-                <p>{t.services.s3_desc}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="projects" className="section projects-section">
-          <h2>{t.projects.title}</h2>
-          <div className="projects-wrapper">
-            <div className="projects-grid">
-              <div className="project-card">
-                <div className="project-image">
-                  <img src={coachingImg} alt="Happy Coaching" />
+            <div className="about-container">
+              <div className="personal-info">
+                <h3>{t.about.personalInfos}</h3>
+                <div className="info-grid">
+                  <div className="info-item"><span>{t.about.firstName}:</span> Dovudhon</div>
+                  <div className="info-item"><span>{t.about.lastName}:</span> Yuldashev</div>
+                  <div className="info-item"><span>{t.about.age}:</span> 27 {lang === 'en' ? 'Years' : lang === 'ru' ? 'лет' : 'yosh'}</div>
+                  <div className="info-item"><span>{t.about.nationality}:</span> {t.about.uzbek}</div>
+                  <div className="info-item"><span>{t.about.freelance}:</span> {t.about.available}</div>
+                  <div className="info-item"><span>{t.about.address}:</span> Namangan</div>
+                  <div className="info-item"><span>{t.about.phone}:</span> +998 95 212 19 99</div>
+                  <div className="info-item"><span>{t.about.email}:</span> dovudhonyoldashev222@gmail.com</div>
+                  <div className="info-item"><span>{t.about.telegram}:</span> @dovudhon_1208</div>
+                  <div className="info-item"><span>Instagram:</span> @y_dovudhon</div>
+                  <div class="info-item"><span>{t.about.languages}:</span> {t.about.uzbek}, {t.about.russian}</div>
                 </div>
-                <div className="project-info">
-                  <h3>{t.projects.p1}</h3>
-                  <p>{t.projects.p1_desc}</p>
-                  <div className="project-actions">
-                    <a href="https://happy-coaching.vercel.app/" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
-                      <ExternalLink size={18} />
-                      <span>Vercel</span>
-                    </a>
-                    <a href="https://github.com/dovudhonyoldashev222-collab/happy-coaching" target="_blank" rel="noopener noreferrer" className="github-btn">
-                      <GithubIcon size={18} />
-                      <span>GitHub</span>
-                    </a>
+                <a href="/CV.html" target="_blank" className="download-cv-btn">
+                  {t.about.downloadCv}
+                  <span className="icon-circle"><Download size={18} /></span>
+                </a>
+              </div>
+
+              <div className="stats-grid">
+                <div className="stat-card">
+                  <h2>1+</h2>
+                  <p>{t.about.stats.exp}</p>
+                </div>
+                <div className="stat-card">
+                  <h2>10+</h2>
+                  <p>{t.about.stats.projects}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </Element>
+
+        <Element name="services">
+          <section id="services" className="section services-section">
+            <h1 className="section-title"><span>{t.services.title.split(' ')[0]}</span> {t.services.title.split(' ')[1]}</h1>
+            <div className="services-grid">
+              <div className="service-card">
+                <div className="service-image">
+                  <img src={cameraServiceImg} alt={t.services.s1} />
+                </div>
+                <div className="service-content">
+                  <div className="service-icon"><Camera size={30} /></div>
+                  <h3>{t.services.s1}</h3>
+                  <p>{t.services.s1_desc}</p>
+                </div>
+              </div>
+              <div className="service-card">
+                <div className="service-image">
+                  <img src={googleServiceImg} alt={t.services.s2} />
+                </div>
+                <div className="service-content">
+                  <div className="service-icon"><ShieldCheck size={30} /></div>
+                  <h3>{t.services.s2}</h3>
+                  <p>{t.services.s2_desc}</p>
+                </div>
+              </div>
+              <div className="service-card">
+                <div className="service-image">
+                  <img src={appleServiceImg} alt={t.services.s3} />
+                </div>
+                <div className="service-content">
+                  <div className="service-icon"><UserPlus size={30} /></div>
+                  <h3>{t.services.s3}</h3>
+                  <p>{t.services.s3_desc}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </Element>
+
+        <Element name="projects">
+          <section id="projects" className="section projects-section">
+            <h2>{t.projects.title}</h2>
+            <div className="projects-wrapper">
+              <div className="projects-grid">
+                <div className="project-card">
+                  <div className="project-image">
+                    <img src={coachingImg} alt="Happy Coaching" />
+                  </div>
+                  <div className="project-info">
+                    <h3>{t.projects.p1}</h3>
+                    <p>{t.projects.p1_desc}</p>
+                    <div className="project-actions">
+                      <a href="https://happy-coaching.vercel.app/" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
+                        <ExternalLink size={18} />
+                        <span>Vercel</span>
+                      </a>
+                      <a href="https://github.com/dovudhonyoldashev222-collab/happy-coaching" target="_blank" rel="noopener noreferrer" className="github-btn">
+                        <GithubIcon size={18} />
+                        <span>GitHub</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="project-card">
+                  <div className="project-image">
+                    <img src={modernizeImg} alt="Modernize" />
+                  </div>
+                  <div className="project-info">
+                    <h3>{t.projects.p2}</h3>
+                    <p>{t.projects.p2_desc}</p>
+                    <div className="project-actions">
+                      <a href="https://products1-two.vercel.app/" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
+                        <ExternalLink size={18} />
+                        <span>Vercel</span>
+                      </a>
+                      <a href="https://github.com/dovudhonyoldashev222-collab/products" target="_blank" rel="noopener noreferrer" className="github-btn">
+                        <GithubIcon size={18} />
+                        <span>GitHub</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="project-card">
+                  <div className="project-image">
+                    <img src={kofeImg} alt="KOFE" />
+                  </div>
+                  <div className="project-info">
+                    <h3>{t.projects.p3}</h3>
+                    <p>{t.projects.p3_desc}</p>
+                    <div className="project-actions">
+                      <a href="https://kofe-smoky.vercel.app" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
+                        <ExternalLink size={18} />
+                        <span>Vercel</span>
+                      </a>
+                      <a href="https://github.com/dovudhonyoldashev222-collab/KOFE" target="_blank" rel="noopener noreferrer" className="github-btn">
+                        <GithubIcon size={18} />
+                        <span>GitHub</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="project-card">
+                  <div className="project-image">
+                    <img src={estateImg} alt="Estate App" />
+                  </div>
+                  <div className="project-info">
+                    <h3>{t.projects.p4}</h3>
+                    <p>{t.projects.p4_desc}</p>
+                    <div className="project-actions">
+                      <a href="https://estate-git-master-dovudhonyoldashev222-collabs-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
+                        <ExternalLink size={18} />
+                        <span>Vercel</span>
+                      </a>
+                      <a href="https://github.com/dovudhonyoldashev222-collab/estate" target="_blank" rel="noopener noreferrer" className="github-btn">
+                        <GithubIcon size={18} />
+                        <span>GitHub</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="project-card">
-                <div className="project-image">
-                  <img src={modernizeImg} alt="Modernize" />
-                </div>
-                <div className="project-info">
-                  <h3>{t.projects.p2}</h3>
-                  <p>{t.projects.p2_desc}</p>
-                  <div className="project-actions">
-                    <a href="https://products1-two.vercel.app/" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
-                      <ExternalLink size={18} />
-                      <span>Vercel</span>
-                    </a>
-                    <a href="https://github.com/dovudhonyoldashev222-collab/products" target="_blank" rel="noopener noreferrer" className="github-btn">
-                      <GithubIcon size={18} />
-                      <span>GitHub</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="project-card">
-                <div className="project-image">
-                  <img src={kofeImg} alt="KOFE" />
-                </div>
-                <div className="project-info">
-                  <h3>{t.projects.p3}</h3>
-                  <p>{t.projects.p3_desc}</p>
-                  <div className="project-actions">
-                    <a href="https://kofe-smoky.vercel.app" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
-                      <ExternalLink size={18} />
-                      <span>Vercel</span>
-                    </a>
-                    <a href="https://github.com/dovudhonyoldashev222-collab/KOFE" target="_blank" rel="noopener noreferrer" className="github-btn">
-                      <GithubIcon size={18} />
-                      <span>GitHub</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="project-card">
-                <div className="project-image">
-                  <img src={estateImg} alt="Estate App" />
-                </div>
-                <div className="project-info">
-                  <h3>{t.projects.p4}</h3>
-                  <p>{t.projects.p4_desc}</p>
-                  <div className="project-actions">
-                    <a href="https://estate-git-master-dovudhonyoldashev222-collabs-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="demo-btn primary">
-                      <ExternalLink size={18} />
-                      <span>Vercel</span>
-                    </a>
-                    <a href="https://github.com/dovudhonyoldashev222-collab/estate" target="_blank" rel="noopener noreferrer" className="github-btn">
-                      <GithubIcon size={18} />
-                      <span>GitHub</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </Element>
 
-        <section id="contact" className="section contact-section">
-          <h2>{t.contact.title}</h2>
-          <p>{t.contact.text}</p>
-          <form
-            className="contact-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              const formData = new FormData(e.target);
-              const name = formData.get('name');
-              const email = formData.get('email');
-              const message = formData.get('message');
-              window.location.href = `mailto:dovudhonyoldashev222@gmail.com?subject=Portfolio Message from ${name}&body=From: ${name} (${email})%0D%0A%0D%0AMessage: ${message}`;
-            }}
-          >
-            <input type="text" name="name" placeholder={t.contact.name} required />
-            <input type="email" name="email" placeholder={t.contact.email} required />
-            <textarea name="message" placeholder={t.contact.message} rows="5" required></textarea>
-            <button type="submit">{t.contact.send}</button>
-          </form>
-        </section>
+        <Element name="contact">
+          <section id="contact" className="section contact-section">
+            <h2>{t.contact.title}</h2>
+            <p>{t.contact.text}</p>
+            <form
+              className="contact-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const message = formData.get('message');
+                window.location.href = `mailto:dovudhonyoldashev222@gmail.com?subject=Portfolio Message from ${name}&body=From: ${name} (${email})%0D%0A%0D%0AMessage: ${message}`;
+              }}
+            >
+              <input type="text" name="name" placeholder={t.contact.name} required />
+              <input type="email" name="email" placeholder={t.contact.email} required />
+              <textarea name="message" placeholder={t.contact.message} rows="5" required></textarea>
+              <button type="submit">{t.contact.send}</button>
+            </form>
+          </section>
+        </Element>
 
         <footer className="footer">
           <div className="footer-content">
