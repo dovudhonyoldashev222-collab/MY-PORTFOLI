@@ -251,7 +251,7 @@ function App() {
                   <div className="info-item"><span>{t.about.address}:</span> Namangan</div>
                   <div className="info-item"><span>{t.about.phone}:</span> +998 95 212 19 99</div>
                   <div className="info-item"><span>{t.about.email}:</span> dovudhonyoldashev222@gmail.com</div>
-                  <div className="info-item"><span>{t.about.telegram}:</span> @dovudhon_1208</div>
+                  <div className="info-item"><span>{t.about.telegram}:</span> @DOVUDKHAN_1208</div>
                   <div className="info-item"><span>Instagram:</span> @y_dovudhon</div>
                   <div class="info-item"><span>{t.about.languages}:</span> {t.about.uzbek}, {t.about.russian}</div>
                 </div>
