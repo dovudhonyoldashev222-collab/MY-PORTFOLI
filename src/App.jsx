@@ -252,7 +252,7 @@ function App() {
                   <div className="info-item"><span>{t.about.phone}:</span> +998 95 212 19 99</div>
                   <div className="info-item"><span>{t.about.email}:</span> dovudhonyoldashev222@gmail.com</div>
                   <div className="info-item"><span>{t.about.telegram}:</span> @DOVUDKHAN_1208</div>
-                  <div className="info-item"><span>Instagram:</span> @y_dovudhon</div>
+                  <div className="info-item"><span>Instagram:</span> @y_dovudkxan</div>
                   <div class="info-item"><span>{t.about.languages}:</span> {t.about.uzbek}, {t.about.russian}</div>
                 </div>
                 <a href="/CV.html" target="_blank" className="download-cv-btn">
@@ -434,7 +434,7 @@ function App() {
               <a href="https://t.me/dovudhon_1208" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
                 <Send size={24} />
               </a>
-              <a href="https://instagram.com/y_dovudhon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://instagram.com/y_dovudkxan" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <Instagram size={24} />
               </a>
               <a href="https://facebook.com/dovudhon.yuldashev" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
