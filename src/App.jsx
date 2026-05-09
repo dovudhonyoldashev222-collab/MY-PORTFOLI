@@ -224,7 +224,7 @@ function App() {
           <section id="hero" className="hero-section">
             <div className="hero-container">
               <div className="hero-image">
-                <img src={heroImg} alt="Dovudkhan" />
+                <img src={heroImg} alt="YULDASHEV DOVUDKHAN" />
               </div>
               <div className="hero-content">
                 <h1>{t.hero.title} <span>{t.hero.name}</span></h1>
