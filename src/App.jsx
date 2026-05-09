@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Element } from 'react-scroll';
-import { Send, Instagram, Facebook, Mail, Globe, Github as GithubIcon, ExternalLink, ShoppingBag, Layout, Code2, Download, User, Briefcase, MessageSquare, Home, Camera, ShieldCheck, UserPlus } from 'lucide-react';
+import { Send, Instagram, Facebook, Mail, Globe, Github as GithubIcon, ExternalLink, ShoppingBag, Layout, Code2, Download, User, Briefcase, MessageSquare, Home, Camera, ShieldCheck, UserPlus, Menu, X } from 'lucide-react';
 import heroImg from './img/image.png'
 import modernizeImg from './img/image copy.png'
 import cameraServiceImg from './img/image copy 2.png'
@@ -134,6 +134,7 @@ const TELEGRAM_CHAT_ID = "537095371";
 function App() {
   const [lang, setLang] = useState('uz');
   const [formStatus, setFormStatus] = useState('');
+  const [showMenu, setShowMenu] = useState(false);
 
   const t = translations[lang];
 
@@ -209,6 +210,41 @@ function App() {
               <li><Link to="projects" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>{t.nav.projects}</Link></li>
               <li><Link to="contact" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>{t.nav.contact}</Link></li>
             </ul>
+            <div className="mobile-menu-container">
+              <button className="menu-dots-btn" onClick={() => setShowMenu(!showMenu)}>
+                {showMenu ? <X size={28} /> : <Menu size={28} />}
+              </button>
+              {showMenu && (
+                <div className="dropdown-menu">
+                  <div className="dropdown-links">
+                    <Link to="hero" smooth={true} duration={500} offset={-70} className="dropdown-item" onClick={() => setShowMenu(false)}>
+                      <Home size={18} /> {t.nav.main}
+                    </Link>
+                    <Link to="about" smooth={true} duration={500} offset={-70} className="dropdown-item" onClick={() => setShowMenu(false)}>
+                      <User size={18} /> {t.nav.about}
+                    </Link>
+                    <Link to="services" smooth={true} duration={500} offset={-70} className="dropdown-item" onClick={() => setShowMenu(false)}>
+                      <Code2 size={18} /> {t.services.title}
+                    </Link>
+                    <Link to="projects" smooth={true} duration={500} offset={-70} className="dropdown-item" onClick={() => setShowMenu(false)}>
+                      <Briefcase size={18} /> {t.nav.projects}
+                    </Link>
+                    <Link to="contact" smooth={true} duration={500} offset={-70} className="dropdown-item" onClick={() => setShowMenu(false)}>
+                      <MessageSquare size={18} /> {t.nav.contact}
+                    </Link>
+                  </div>
+                  <div className="dropdown-divider"></div>
+                  <div className="dropdown-lang">
+                    <button onClick={() => { setLang('en'); setShowMenu(false); }} className={lang === 'en' ? 'active' : ''}>EN</button>
+                    <button onClick={() => { setLang('uz'); setShowMenu(false); }} className={lang === 'uz' ? 'active' : ''}>UZ</button>
+                    <button onClick={() => { setLang('ru'); setShowMenu(false); }} className={lang === 'ru' ? 'active' : ''}>RU</button>
+                  </div>
+                  <a href="/CV.html" target="_blank" className="dropdown-item cv-item" onClick={() => setShowMenu(false)}>
+                    <Download size={18} /> {t.about.downloadCv}
+                  </a>
+                </div>
+              )}
+            </div>
           </nav>
         </header>
 
