@@ -14,7 +14,7 @@ import './App.css';
 const translations = {
   uz: {
     nav: { main: 'Asosiy', about: 'Men haqimda', projects: 'Loyihalar', contact: 'Aloqa' },
-    hero: { title: 'Salom, men', subtitle: 'Frontend dasturchi va Texnik mutaxassis', button: 'Bog\'lanish', name: 'Yuldashev Dovudhon' },
+    hero: { title: 'Salom, men', subtitle: 'Frontend dasturchi va Texnik mutaxassis', button: 'Bog\'lanish', name: 'YULDASHEV DOVUDKHAN' },
     about: {
       title: 'MEN HAQIMDA',
       personalInfos: 'Shaxsiy ma\'lumotlar',
@@ -52,7 +52,7 @@ const translations = {
   },
   ru: {
     nav: { main: 'Главная', about: 'Обо мне', projects: 'Проекты', contact: 'Контакт' },
-    hero: { title: 'Привет, я', subtitle: 'Frontend разработчик и Технический специалист', button: 'Связаться', name: 'Юлдашев Довудхон' },
+    hero: { title: 'Привет, я', subtitle: 'Frontend разработчик и Технический специалист', button: 'Связаться', name: 'YULDASHEV DOVUDKHAN' },
     about: {
       title: 'ОБО МНЕ',
       personalInfos: 'Личная информация',
@@ -90,7 +90,7 @@ const translations = {
   },
   en: {
     nav: { main: 'Home', about: 'About', projects: 'Projects', contact: 'Contact' },
-    hero: { title: 'Hello, I am', subtitle: 'Frontend Developer & Technical Specialist', button: 'Contact Me', name: 'Yuldashev Dovudhon' },
+    hero: { title: 'Hello, I am', subtitle: 'Frontend Developer & Technical Specialist', button: 'Contact Me', name: 'YULDASHEV DOVUDKHAN' },
     about: {
       title: 'ABOUT ME',
       personalInfos: 'Personal Infos',
@@ -224,7 +224,7 @@ function App() {
           <section id="hero" className="hero-section">
             <div className="hero-container">
               <div className="hero-image">
-                <img src={heroImg} alt="Dovudhon" />
+                <img src={heroImg} alt="Dovudkhan" />
               </div>
               <div className="hero-content">
                 <h1>{t.hero.title} <span>{t.hero.name}</span></h1>
@@ -243,8 +243,8 @@ function App() {
               <div className="personal-info">
                 <h3>{t.about.personalInfos}</h3>
                 <div className="info-grid">
-                  <div className="info-item"><span>{t.about.firstName}:</span> Dovudhon</div>
-                  <div className="info-item"><span>{t.about.lastName}:</span> Yuldashev</div>
+                  <div className="info-item"><span>{t.about.firstName}:</span> DOVUDKHAN</div>
+                  <div className="info-item"><span>{t.about.lastName}:</span> YULDASHEV</div>
                   <div className="info-item"><span>{t.about.age}:</span> 27 {lang === 'en' ? 'Years' : lang === 'ru' ? 'лет' : 'yosh'}</div>
                   <div className="info-item"><span>{t.about.nationality}:</span> {t.about.uzbek}</div>
                   <div className="info-item"><span>{t.about.freelance}:</span> {t.about.available}</div>
