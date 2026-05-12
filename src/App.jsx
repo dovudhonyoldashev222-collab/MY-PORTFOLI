@@ -283,13 +283,12 @@ function App() {
                   <div className="info-item"><span>{t.about.lastName}:</span> YULDASHEV</div>
                   <div className="info-item"><span>{t.about.age}:</span> 27 {lang === 'en' ? 'Years' : lang === 'ru' ? 'лет' : 'yosh'}</div>
                   <div className="info-item"><span>{t.about.nationality}:</span> {t.about.uzbek}</div>
-                  <div className="info-item"><span>{t.about.freelance}:</span> {t.about.available}</div>
                   <div className="info-item"><span>{t.about.address}:</span> Namangan</div>
                   <div className="info-item"><span>{t.about.phone}:</span> +998 95 212 19 99</div>
                   <div className="info-item"><span>{t.about.email}:</span> dovudhonyoldashev222@gmail.com</div>
                   <div className="info-item"><span>{t.about.telegram}:</span> @DOVUDKHAN_1208</div>
                   <div className="info-item"><span>Instagram:</span> @y_dovudkxan</div>
-                  <div class="info-item"><span>{t.about.languages}:</span> {t.about.uzbek}, {t.about.russian}</div>
+                  <div className="info-item"><span>{t.about.languages}:</span> {t.about.uzbek}, {t.about.russian}</div>
                 </div>
                 <a href="/CV.html" target="_blank" className="download-cv-btn">
                   {t.about.downloadCv}
