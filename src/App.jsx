@@ -350,7 +350,7 @@ function App() {
 
         <Element name="projects">
           <section id="projects" className="section projects-section">
-            <h2>{t.projects.title}</h2>
+            <h2 className="projects-title">{t.projects.title}</h2>
             <div className="projects-wrapper">
               <div className="projects-grid">
                 <div className="project-card">
@@ -436,8 +436,8 @@ function App() {
 
         <Element name="contact">
           <section id="contact" className="section contact-section">
-            <h2>{t.contact.title}</h2>
-            <p>{t.contact.text}</p>
+            <h2 className="contact-title">{t.contact.title}</h2>
+            <p className="contact-text">{t.contact.text}</p>
             <form
               className="contact-form"
               onSubmit={handleContactSubmit}
