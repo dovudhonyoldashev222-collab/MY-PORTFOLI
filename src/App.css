@@ -28,6 +28,11 @@ body {
   overflow-x: hidden;
 }
 
+.portfolio {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* Unified Header */
 .header-wrapper {
   position: fixed;
@@ -1028,6 +1033,8 @@ body {
 
   .hero-section {
     padding-top: 100px;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
   .hero-container {
@@ -1046,7 +1053,15 @@ body {
   }
 
   .hero-image img {
-    max-width: 320px;
+    max-width: 280px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content h1 span {
+    font-size: 3.5rem;
   }
 
   .about-container {
@@ -1073,31 +1088,37 @@ body {
 
   .sidebar-nav {
     display: none;
-    /* Mobile dropdown menu ishlatilganda sidebar-nav shart emas */
   }
 
   .section-title {
-    font-size: 2.8rem;
-    margin-bottom: 50px;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+
+  .projects-title,
+  .contact-title {
+    font-size: 2.2rem;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 60px 5%;
+  }
+
   .hero-content h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
 
   .hero-content h1 span {
-    font-size: 3.8rem;
+    font-size: 2.8rem;
   }
 
   .hero-content p {
-    font-size: 1.1rem;
-    margin: 1rem auto 2.5rem auto;
-  }
-
-  .section {
-    padding: 80px 5%;
+    font-size: 1rem;
+    margin: 1rem auto 2rem auto;
   }
 
   .projects-wrapper {
@@ -1115,47 +1136,93 @@ body {
     gap: 2rem;
   }
 
-  .stat-card h2 {
-    font-size: 2.5rem;
+  .stat-card {
+    padding: 1.5rem;
   }
 
-  .footer-socials {
-    gap: 1.5rem;
+  .stat-card h2 {
+    font-size: 2.2rem;
   }
 
   .contact-form {
-    padding: 0 10px;
+    padding: 1.5rem;
+    border-radius: 24px;
+  }
+
+  .contact-title {
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 480px) {
+  .navbar .logo {
+    font-size: 1.3rem;
+  }
+
+  .hero-image img {
+    max-width: 220px;
+  }
+
   .hero-content h1 span {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
   }
 
   .section-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+  }
+
+  .projects-title,
+  .contact-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    width: 90%;
   }
 
   .service-image {
-    height: 200px;
+    height: 180px;
   }
 
   .personal-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .info-item {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .info-item span {
+    min-width: unset;
+    margin-right: 0;
   }
 
   .cta-button,
   .download-cv-btn {
     width: 100%;
     justify-content: center;
+    padding: 0.8rem 1.5rem;
   }
 
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+    right: -10px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero-content h1 span {
+    font-size: 2rem;
+  }
+
+  .projects-title,
+  .contact-title {
+    font-size: 1.4rem;
   }
 }
