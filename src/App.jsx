@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Element } from 'react-scroll';
-import { Send, Instagram, Facebook, Mail, Globe, Github as GithubIcon, ExternalLink, ShoppingBag, Layout, Code2, Download, User, Briefcase, MessageSquare, Home, Camera, ShieldCheck, UserPlus, Menu, X } from 'lucide-react';
+import { Send, Instagram, Facebook, Mail, Globe, Github as GithubIcon, ExternalLink, ShoppingBag, Layout, Code2, Download, User, Briefcase, MessageSquare, Home, Camera, ShieldCheck, UserPlus, Menu, X, Wrench } from 'lucide-react';
 import heroImg from './img/image.png'
 import modernizeImg from './img/image copy.png'
 import cameraServiceImg from './img/image copy 2.png'
@@ -17,6 +17,7 @@ const translations = {
     hero: { title: 'Salom, men', subtitle: 'Frontend dasturchi va Texnik mutaxassis', button: 'Bog\'lanish', name: 'YULDASHEV DOVUDKHAN' },
     about: {
       title: 'MEN HAQIMDA',
+      description: 'Men 1 yildan ortiq tajribaga ega bo\'lgan mutaxassisman. Zamonaviy texnologiyalar yordamida foydalanuvchilar uchun qulay yechimlar yaratish, xavfsizlik tizimlarini o\'rnatish va texnik qo\'llab-quvvatlash bo\'yicha katta tajribaga egaman. Doimiy ravishda yangi bilimlarni o\'rganishga va mijozlarga sifatli xizmat ko\'rsatishga harakat qilaman.',
       personalInfos: 'Shaxsiy ma\'lumotlar',
       firstName: 'Ism',
       lastName: 'Familiya',
@@ -44,7 +45,9 @@ const translations = {
       s2: 'Google Account',
       s2_desc: 'Google va Gmail akkauntlarini ochish va xavfsizligini ta\'minlash.',
       s3: 'iCloud Account',
-      s3_desc: 'Apple ID va iCloud akkauntlarini ochish va sozlash.'
+      s3_desc: 'Apple ID va iCloud akkauntlarini ochish va sozlash.',
+      s4: 'Texnik yordam',
+      s4_desc: 'Qurilmalarni sozlash va muammolarni bartaraf etish.'
     },
     projects: { title: 'Loyihalar', view: 'GitHub-da ko\'rish', p1: 'Happy Coaching', p1_desc: 'Coaching platformasi.', p2: 'Modernize', p2_desc: 'Mahsulotlar boshqaruvi.', p3: 'KOFE', p3_desc: 'Kofe menyu tizimi.', p4: 'Estate App', p4_desc: 'Ko\'chmas mulk platformasi.' },
     contact: { title: 'Aloqa', text: 'Savollaringiz bormi? Quyidagi formani to\'ldiring:', name: 'Ismingiz', email: 'Emailingiz', message: 'Xabaringiz', send: 'Yuborish' },
@@ -55,6 +58,7 @@ const translations = {
     hero: { title: 'Привет, я', subtitle: 'Frontend разработчик и Технический специалист', button: 'Связаться', name: 'YULDASHEV DOVUDKHAN' },
     about: {
       title: 'ОБО МНЕ',
+      description: 'Я специалист с более чем 1-летним опытом. Имею большой опыт создания удобных для пользователя решений с использованием современных технологий, установки систем безопасности и технической поддержки. Постоянно стараюсь изучать новые знания и предоставлять качественные услуги клиентам.',
       personalInfos: 'Личная информация',
       firstName: 'Имя',
       lastName: 'Фамилия',
@@ -82,7 +86,9 @@ const translations = {
       s2: 'Google Account',
       s2_desc: 'Создание и обеспечение безопасности аккаунтов Google и Gmail.',
       s3: 'iCloud Account',
-      s3_desc: 'Создание и настройка аккаунтов Apple ID и iCloud.'
+      s3_desc: 'Создание и настройка аккаунтов Apple ID и iCloud.',
+      s4: 'Техническая поддержка',
+      s4_desc: 'Настройка устройств и устранение неполадок.'
     },
     projects: { title: 'Проекты', view: 'Смотреть на GitHub', p1: 'Happy Coaching', p1_desc: 'Коучинг платформа.', p2: 'Modernize', p2_desc: 'Управление продуктами.', p3: 'KOFE', p3_desc: 'Кофейное меню.', p4: 'Estate App', p4_desc: 'Платформа недвижимости.' },
     contact: { title: 'Контакт', text: 'Есть вопросы? Заполните форму ниже:', name: 'Ваше имя', email: 'Ваш Email', message: 'Ваше сообщение', send: 'Отправить' },
@@ -93,6 +99,7 @@ const translations = {
     hero: { title: 'Hello, I am', subtitle: 'Frontend Developer & Technical Specialist', button: 'Contact Me', name: 'YULDASHEV DOVUDKHAN' },
     about: {
       title: 'ABOUT ME',
+      description: 'I am a specialist with more than 1 year of experience. I have extensive experience in creating user-friendly solutions using modern technologies, installing security systems, and technical support. I constantly strive to learn new knowledge and provide quality services to customers.',
       personalInfos: 'Personal Infos',
       firstName: 'First Name',
       lastName: 'Last Name',
@@ -120,7 +127,9 @@ const translations = {
       s2: 'Google Account',
       s2_desc: 'Opening and securing Google and Gmail accounts.',
       s3: 'iCloud Account',
-      s3_desc: 'Opening and configuring Apple ID and iCloud accounts.'
+      s3_desc: 'Opening and configuring Apple ID and iCloud accounts.',
+      s4: 'Technical Support',
+      s4_desc: 'Device configuration and troubleshooting.'
     },
     projects: { title: 'Projects', view: 'View on GitHub', p1: 'Happy Coaching', p1_desc: 'Coaching platform.', p2: 'Modernize', p2_desc: 'Products management.', p3: 'KOFE', p3_desc: 'Coffee menu system.', p4: 'Estate App', p4_desc: 'Real estate platform.' },
     contact: { title: 'Contact', text: 'Any questions? Fill out the form:', name: 'Your Name', email: 'Your Email', message: 'Your Message', send: 'Send' },
@@ -277,6 +286,7 @@ function App() {
 
             <div className="about-container">
               <div className="personal-info">
+                <p className="about-description">{t.about.description}</p>
                 <h3>{t.about.personalInfos}</h3>
                 <div className="info-grid">
                   <div className="info-item"><span>{t.about.firstName}:</span> DOVUDKHAN</div>
@@ -342,6 +352,16 @@ function App() {
                   <div className="service-icon"><UserPlus size={30} /></div>
                   <h3>{t.services.s3}</h3>
                   <p>{t.services.s3_desc}</p>
+                </div>
+              </div>
+              <div className="service-card">
+                <div className="service-image">
+                  <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop" alt={t.services.s4} />
+                </div>
+                <div className="service-content">
+                  <div className="service-icon"><Wrench size={30} /></div>
+                  <h3>{t.services.s4}</h3>
+                  <p>{t.services.s4_desc}</p>
                 </div>
               </div>
             </div>
